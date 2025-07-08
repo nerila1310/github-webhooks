@@ -8,8 +8,6 @@ export class GithubController {
     const signature = req.header("x-hub-signature-256") ?? "unknown";
     const payload = req.body;
 
-    console.log({ githubEvent, signature });
-
     res.status(202).json("Acepted");
   };
 }
