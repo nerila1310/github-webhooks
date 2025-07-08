@@ -10,12 +10,16 @@ export class GithubController {
     const githubEvent = req.header("x-github-event") ?? "unknown";
     // const signature = req.header("x-hub-signature-256") ?? "unknown";
     const payload = req.body;
+    console.log({payload})
     let message: string;
 
     switch(githubEvent){
       case "star":
         message = this.githubService.onStar(payload);
       break;
+      case "issues":
+        message = this.githubService.onIssue(payload);
+        break;
 
       default:
         message = `Unknown event ${githubEvent}`;
